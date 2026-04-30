@@ -1,0 +1,81 @@
+# Weini AI Skills - MCP Server Configuration
+
+# This file enables Model Context Protocol (MCP) compatibility
+# MCP is a standard for AI agents to discover and use external tools
+
+{
+  "name": "weini-ai-skills",
+  "version": "1.0.0",
+  "description": "AI Agent Skills for Proxy Node Management",
+  "protocol": "mcp/1.0",
+  
+  "server": {
+    "command": "python",
+    "args": ["-m", "skills.mcp_server"],
+    "env": {}
+  },
+  
+  "tools": [
+    {
+      "name": "crawl_ss_nodes",
+      "description": "Crawl free Shadowsocks nodes from public sources",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "sources": {
+            "type": "array",
+            "items": { "type": "string" },
+            "description": "Sources to crawl from (github, telegram, web)"
+          },
+          "validate": {
+            "type": "boolean",
+            "description": "Validate nodes after crawling"
+          }
+        }
+      }
+    },
+    {
+      "name": "validate_nodes",
+      "description": "Test proxy nodes for connectivity and speed",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "nodes": {
+            "type": "array",
+            "description": "List of proxy nodes to validate"
+          },
+          "timeout": {
+            "type": "number",
+            "description": "Connection timeout in seconds"
+          }
+        },
+        "required": ["nodes"]
+      }
+    },
+    {
+      "name": "generate_config",
+      "description": "Generate proxy client configuration",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "nodes": {
+            "type": "array",
+            "description": "List of proxy nodes"
+          },
+          "client": {
+            "type": "string",
+            "enum": ["sing-box", "clash", "v2ray"],
+            "description": "Target client type"
+          }
+        },
+        "required": ["nodes", "client"]
+      }
+    }
+  ],
+  
+  "capabilities": {
+    "tools": true,
+    "resources": false,
+    "prompts": false
+  }
+}

@@ -1,0 +1,191 @@
+{
+  "name": "weini-ai-skills",
+  "version": "1.0.0",
+  "description": "AI Agent Skills for Internet Freedom - Proxy Node Management",
+  "author": "Weini Securenet LLC",
+  "license": "MIT",
+  "skills": [
+    {
+      "id": "ss_crawler",
+      "name": "SS Node Crawler",
+      "description": "Crawl and aggregate free Shadowsocks nodes from public sources",
+      "file": "skills/ss_crawler.py",
+      "function": "main",
+      "category": "discovery",
+      "tags": ["proxy", "shadowsocks", "crawler", "nodes"],
+      "input": {
+        "type": "object",
+        "properties": {
+          "output": {
+            "type": "string",
+            "description": "Output file path for nodes",
+            "default": "nodes.json"
+          },
+          "sources": {
+            "type": "array",
+            "description": "List of sources to crawl from",
+            "items": {
+              "type": "string",
+              "enum": ["github", "telegram", "web"]
+            },
+            "default": ["github"]
+          },
+          "validate": {
+            "type": "boolean",
+            "description": "Whether to validate nodes after crawling",
+            "default": false
+          }
+        }
+      },
+      "output": {
+        "type": "object",
+        "description": "List of crawled SS nodes",
+        "properties": {
+          "nodes": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "server": { "type": "string" },
+                "port": { "type": "integer" },
+                "password": { "type": "string" },
+                "method": { "type": "string" },
+                "remarks": { "type": "string" }
+              }
+            }
+          },
+          "count": { "type": "integer" }
+        }
+      },
+      "examples": [
+        "Find free SS nodes",
+        "Crawl Shadowsocks nodes from GitHub",
+        "Get proxy nodes for me"
+      ]
+    },
+    {
+      "id": "node_validator",
+      "name": "Node Validator",
+      "description": "Test proxy nodes for connectivity, latency and availability",
+      "file": "skills/node_validator.py",
+      "function": "main",
+      "category": "validation",
+      "tags": ["proxy", "test", "validation", "latency"],
+      "input": {
+        "type": "object",
+        "properties": {
+          "nodes": {
+            "type": "array",
+            "description": "List of nodes to validate",
+            "items": { "type": "object" }
+          },
+          "timeout": {
+            "type": "integer",
+            "description": "Connection timeout in seconds",
+            "default": 5
+          },
+          "concurrency": {
+            "type": "integer",
+            "description": "Number of concurrent tests",
+            "default": 10
+          }
+        },
+        "required": ["nodes"]
+      },
+      "output": {
+        "type": "object",
+        "description": "Validation results with latency",
+        "properties": {
+          "valid_nodes": {
+            "type": "array",
+            "items": { "type": "object" }
+          },
+          "invalid_nodes": {
+            "type": "array",
+            "items": { "type": "object" }
+          },
+          "stats": {
+            "type": "object",
+            "properties": {
+              "total": { "type": "integer" },
+              "valid": { "type": "integer" },
+              "invalid": { "type": "integer" },
+              "average_latency": { "type": "number" }
+            }
+          }
+        }
+      },
+      "examples": [
+        "Validate these nodes",
+        "Test which nodes are working",
+        "Check node connectivity"
+      ]
+    },
+    {
+      "id": "singbox_config_generator",
+      "name": "sing-box Config Generator",
+      "description": "Generate sing-box proxy configuration from node list",
+      "file": "skills/singbox_config_generator.py",
+      "function": "main",
+      "category": "config",
+      "tags": ["proxy", "config", "sing-box", "generator"],
+      "input": {
+        "type": "object",
+        "properties": {
+          "nodes": {
+            "type": "array",
+            "description": "List of proxy nodes",
+            "items": { "type": "object" }
+          },
+          "output": {
+            "type": "string",
+            "description": "Output config file path",
+            "default": "config.json"
+          },
+          "port": {
+            "type": "integer",
+            "description": "Local proxy port",
+            "default": 1080
+          }
+        },
+        "required": ["nodes"]
+      },
+      "output": {
+        "type": "object",
+        "description": "Generated sing-box configuration",
+        "properties": {
+          "config_path": { "type": "string" },
+          "node_count": { "type": "integer" }
+        }
+      },
+      "examples": [
+        "Generate sing-box config",
+        "Create proxy configuration",
+        "Make config file from these nodes"
+      ]
+    }
+  ],
+  "requirements": {
+    "python": ">=3.8",
+    "dependencies": [
+      "requests>=2.28.0",
+      "beautifulsoup4>=4.11.0",
+      "pyyaml>=6.0",
+      "aiohttp>=3.8.0"
+    ]
+  },
+  "ai_integration": {
+    "supported_platforms": [
+      "Claude Code",
+      "Cursor",
+      "GitHub Copilot",
+      "OpenAI GPT",
+      "Anthropic Claude"
+    ],
+    "invocation_methods": [
+      "natural_language",
+      "function_calling",
+      "mcp_protocol"
+    ]
+  }
+}
