@@ -58,69 +58,28 @@ AI 助手可以直接调用这些 Skills，自动完成任务！
 
 ---
 
-## 🚀 如何使用
+## 🚀 快速开始
 
-### 方法一：让 AI 助手导入（推荐）
+### 🤖 让 AI 帮你（推荐）
 
-如果你使用支持 Skills 的 AI 工具（如 Claude Code、Cursor、OpenClaw）：
-
-**步骤1：告诉 AI 导入**
+**对 AI 说：**
 ```
-"从 https://github.com/Weini-Securenet-LLC/weini-ai-skills 导入技能"
-```
-
-**步骤2：自然语言使用**
-```
-"帮我找50个可用的SS节点"
-"验证这些节点并生成配置文件"  
-"自动找节点、验证、生成 sing-box 配置"
+"导入 https://github.com/Weini-Securenet-LLC/weini-ai-skills"
+"帮我找50个可用的代理节点"
 ```
 
-AI 会自动：
-- 📥 读取 `skills/` 目录中的 Python 脚本
-- 🔧 理解每个技能的功能
-- ⚡ 执行你的请求
-- 📊 返回处理结果
+AI 会自动运行相关技能并返回结果。
 
-### 方法二：手动使用
-
-如果你更喜欢直接运行脚本：
+### 💻 手动运行
 
 ```bash
-# 1. 克隆项目
 git clone https://github.com/Weini-Securenet-LLC/weini-ai-skills.git
 cd weini-ai-skills
-
-# 2. 安装依赖
 pip install -r requirements.txt
 
-# 3. 运行技能
 python skills/ss_crawler.py          # 爬取节点
-python skills/node_validator.py      # 验证节点
+python skills/node_validator.py      # 验证节点  
 python skills/singbox_config_generator.py  # 生成配置
-```
-
-### 在不同 AI 工具中使用
-
-#### Cursor / Claude Code
-```
-1. 打开项目目录
-2. 在聊天中输入: @weini-ai-skills 爬取并验证代理节点
-```
-
-#### GitHub Copilot
-```python
-# 将 skills/ 目录添加到工作区
-# Copilot 会自动识别这些技能
-# 在代码中输入注释：
-# 使用 SS 爬虫获取节点
-```
-
-#### OpenClaw / 其他
-```
-1. git clone 此项目到本地
-2. 告诉 AI: "我有 weini-ai-skills 项目"
-3. AI 会读取并使用这些技能
 ```
 
 ---
