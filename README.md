@@ -4,7 +4,7 @@
 
 **Open-Source AI Tools for Internet Freedom**
 
-*赋能 AI，让每个人都能实现通信自由*
+*让 AI 编程助手成为互联网自由的工具*
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Python](https://img.shields.io/badge/Python-3.8+-blue.svg)](https://www.python.org/)
@@ -19,9 +19,29 @@
 
 ## 🎯 项目愿景
 
-**让 AI 成为互联网自由的工具**
+**专为 AI 编程助手设计的互联网自由工具集**
 
-本项目提供一系列开源的 AI Agent Skills，让任何人都能通过 AI 工具（如 Claude、GPT、Cursor 等）自动化地：
+### 🤝 适用于以下 AI 工具
+
+- 🦅 **Claude Code** / **Cursor** - AI 编程工具
+- 🚀 **OpenClaw** - AI 代码助手  
+- 💬 **GitHub Copilot** - AI 代码补全
+- 🤖 **Codex** - OpenAI 代码模型
+- 📝 **Hermes** - AI 助手工具
+- 🛠️ **其他支持自定义 Skills 的 AI 工具**
+
+### 💡 使用场景
+
+当你对 AI 助手说：
+```
+"帮我找一些可用的免费代理节点"
+"验证这些节点哪些能用"  
+"生成一个 sing-box 配置文件"
+```
+
+AI 助手可以直接调用这些 Skills，自动完成任务！
+
+本项目提供一系列开源的 AI Agent Skills，让任何人都能通过 AI 工具自动化地：
 - 🔍 发现可用的翻墙节点
 - ✅ 验证节点可用性
 - 🔧 生成代理配置文件
@@ -35,6 +55,73 @@
 - 🔄 **持续更新**: 适应不断变化的网络环境
 - 🆓 **完全免费**: 开源共享，人人可用
 - 🌍 **全球协作**: 共同对抗网络审查
+
+---
+
+## 🚀 如何使用
+
+### 方法一：让 AI 助手导入（推荐）
+
+如果你使用支持 Skills 的 AI 工具（如 Claude Code、Cursor、OpenClaw）：
+
+**步骤1：告诉 AI 导入**
+```
+"从 https://github.com/Weini-Securenet-LLC/weini-ai-skills 导入技能"
+```
+
+**步骤2：自然语言使用**
+```
+"帮我找50个可用的SS节点"
+"验证这些节点并生成配置文件"  
+"自动找节点、验证、生成 sing-box 配置"
+```
+
+AI 会自动：
+- 📥 读取 `skills/` 目录中的 Python 脚本
+- 🔧 理解每个技能的功能
+- ⚡ 执行你的请求
+- 📊 返回处理结果
+
+### 方法二：手动使用
+
+如果你更喜欢直接运行脚本：
+
+```bash
+# 1. 克隆项目
+git clone https://github.com/Weini-Securenet-LLC/weini-ai-skills.git
+cd weini-ai-skills
+
+# 2. 安装依赖
+pip install -r requirements.txt
+
+# 3. 运行技能
+python skills/ss_crawler.py          # 爬取节点
+python skills/node_validator.py      # 验证节点
+python skills/singbox_config_generator.py  # 生成配置
+```
+
+### 在不同 AI 工具中使用
+
+#### Cursor / Claude Code
+```
+1. 打开项目目录
+2. 在聊天中输入: @weini-ai-skills 爬取并验证代理节点
+```
+
+#### GitHub Copilot
+```python
+# 将 skills/ 目录添加到工作区
+# Copilot 会自动识别这些技能
+# 在代码中输入注释：
+# 使用 SS 爬虫获取节点
+```
+
+#### OpenClaw / 其他
+```
+1. git clone 此项目到本地
+2. 告诉 AI: "我有 weini-ai-skills 项目"
+3. AI 会读取并使用这些技能
+```
 
 ---
 
