@@ -83,48 +83,61 @@ python skills/singbox_config_generator.py  # 生成配置
 
 ## 📖 技能列表
 
-<details>
-<summary>🔍 <b>节点发现</b> - 3个技能</summary>
+### 🔍 节点发现（3个技能）
 
-- `ss_crawler.py` - SS节点爬虫
-- `vmess_crawler.py` - VMess节点爬虫  
-- `github_node_aggregator.py` - GitHub节点聚合
+| 技能 | 能做什么 |
+|------|----------|
+| `ss_crawler.py` | 从 GitHub、Telegram 等公开渠道自动抓取免费 SS 节点 |
+| `vmess_crawler.py` | 抓取 VMess/VLESS/Trojan 等协议的免费节点 |
+| `github_node_aggregator.py` | 汇总 GitHub 上所有免费节点项目的最新节点 |
 
-</details>
+**用法：** 对 AI 说 *"帮我找一些免费代理节点"*
 
-<details>
-<summary>✅ <b>节点验证</b> - 2个技能</summary>
+---
 
-- `node_validator.py` - 节点验证器
-- `batch_validator.py` - 批量验证器
+### ✅ 节点验证（2个技能）
 
-</details>
+| 技能 | 能做什么 |
+|------|----------|
+| `node_validator.py` | 测试节点能不能连、速度快不快、在哪个国家 |
+| `batch_validator.py` | 同时测试几百个节点，找出最快最稳定的 |
 
-<details>
-<summary>🔧 <b>配置生成</b> - 3个技能</summary>
+**用法：** 对 AI 说 *"验证这些节点哪些能用"*
 
-- `singbox_config_generator.py` - sing-box配置
-- `clash_config_generator.py` - Clash配置
-- `v2ray_config_generator.py` - V2Ray配置
+---
 
-</details>
+### 🔧 配置生成（3个技能）
 
-<details>
-<summary>📊 <b>监控运维</b> - 2个技能</summary>
+| 技能 | 能做什么 |
+|------|----------|
+| `singbox_config_generator.py` | 生成 sing-box 客户端配置文件，直接导入使用 |
+| `clash_config_generator.py` | 生成 Clash 配置文件，适配各种 Clash 客户端 |
+| `v2ray_config_generator.py` | 生成 V2Ray 配置文件，支持多种代理协议 |
 
-- `node_monitor.py` - 节点监控
-- `subscription_updater.py` - 订阅更新
+**用法：** 对 AI 说 *"生成一个 sing-box 配置文件"*
 
-</details>
+---
 
-<details>
-<summary>🛠️ <b>实用工具</b> - 3个技能</summary>
+### 📊 监控运维（2个技能）
 
-- `base64_codec.py` - Base64编解码
-- `qrcode_generator.py` - 二维码生成
-- `subscription_generator.py` - 订阅生成
+| 技能 | 能做什么 |
+|------|----------|
+| `node_monitor.py` | 定时检查节点状态，节点挂了自动通知你 |
+| `subscription_updater.py` | 自动更新订阅链接，保持节点列表最新 |
 
-</details>
+**用法：** 对 AI 说 *"帮我监控这些节点的状态"*
+
+---
+
+### 🛠️ 实用工具（3个技能）
+
+| 技能 | 能做什么 |
+|------|----------|
+| `base64_codec.py` | 解码/编码节点分享链接（ss:// vmess:// 等） |
+| `qrcode_generator.py` | 把节点信息生成二维码，手机扫码导入 |
+| `subscription_generator.py` | 把你的节点列表生成订阅链接，分享给朋友 |
+
+**用法：** 对 AI 说 *"把这些节点生成二维码"*
 
 ---
 
