@@ -221,7 +221,7 @@ python skills/singbox_config_generator.py  # 生成配置
 
 - 💬 [GitHub Discussions](https://github.com/Weini-Securenet-LLC/weini-ai-skills/discussions)
 - 🐛 [报告问题](https://github.com/Weini-Securenet-LLC/weini-ai-skills/issues)
-- 📧 Email: contact@weinisecure.net
+- 📧 Email: info@weinisecure.net
 
 ---
 
