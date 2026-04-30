@@ -13,9 +13,18 @@
 
 ## 💡 这是什么？
 
-一套让 AI 助手（Claude、Cursor、Copilot 等）自动管理代理节点的工具。
+一套**符合行业标准**的 AI Agent Skills，让 AI 助手（Claude、Cursor、Copilot 等）自动管理代理节点。
 
 **你不需要懂技术，只需要会说话。**
+
+### ✨ 标准化特性
+
+- ✅ 完整的技能元数据（`skills.json`）
+- ✅ MCP 协议兼容（`mcp.json`）
+- ✅ OpenAI Function Calling 格式
+- ✅ 统一的输入输出 Schema
+- ✅ 自然语言调用示例
+- ✅ 多平台自动发现
 
 ---
 
@@ -60,10 +69,28 @@ AI 会自动：
 
 ## 🤝 支持的 AI 工具
 
-- ✅ Claude Code / Cursor
-- ✅ GitHub Copilot
-- ✅ OpenAI Codex
-- ✅ 其他支持导入 Skills 的 AI 工具
+- ✅ **Claude Code / Cursor** - 通过 MCP 协议自动发现
+- ✅ **GitHub Copilot** - Function Calling 集成
+- ✅ **OpenAI GPT** - 标准 Function Schema
+- ✅ **LangChain** - 兼容 Tools 接口
+- ✅ **其他 AI 工具** - 通过 `skills.json` 自动识别
+
+---
+
+## 📁 项目结构
+
+```
+weini-ai-skills/
+├── skills.json          # 技能清单（AI 自动读取）
+├── mcp.json            # MCP 协议配置
+├── skills/             # 技能脚本目录
+│   ├── README.md       # 集成指南
+│   ├── ss_crawler.py   # SS 节点爬虫
+│   ├── node_validator.py      # 节点验证
+│   └── singbox_config_generator.py  # 配置生成
+├── requirements.txt    # Python 依赖
+└── README.md          # 本文件
+```
 
 ---
 
@@ -77,6 +104,23 @@ pip install -r requirements.txt
 python skills/ss_crawler.py          # 爬取节点
 python skills/node_validator.py      # 验证节点  
 python skills/singbox_config_generator.py  # 生成配置
+```
+
+### 标准化输出格式
+
+所有技能返回统一格式：
+
+```python
+{
+    "success": True,
+    "data": { ... },          # 实际数据
+    "message": "操作成功",
+    "metadata": {
+        "skill": "ss_crawler",
+        "duration": 2.5,
+        "timestamp": "2026-04-30T16:44:00Z"
+    }
+}
 ```
 
 ---
@@ -144,6 +188,23 @@ python skills/singbox_config_generator.py  # 生成配置
 ## 🤝 贡献
 
 欢迎贡献新技能！查看 [CONTRIBUTING.md](CONTRIBUTING.md)
+
+### 技能开发规范
+
+每个技能需要：
+- 完整的 docstring 说明
+- 标准的输入输出格式
+- 在 `skills.json` 中注册
+- 包含自然语言示例
+
+---
+
+## 📚 技术文档
+
+- **集成指南**: [skills/README.md](skills/README.md)
+- **技能清单**: [skills.json](skills.json)
+- **MCP 配置**: [mcp.json](mcp.json)
+- **贡献指南**: [CONTRIBUTING.md](CONTRIBUTING.md)
 
 ---
 
